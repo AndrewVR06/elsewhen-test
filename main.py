@@ -32,7 +32,7 @@ def slcsp(file, show_stderr):
             continue
 
         if len(zipcode_rates) == 1:
-            print("Cannot determine SLCSP because there is only a single available rate", file=sys.stderr)
+            print(f"{zipcode}, Cannot determine SLCSP because there is only a single available rate", file=sys.stderr)
             continue
 
         unique_sorted_rates = sorted(set(zipcode_rates))

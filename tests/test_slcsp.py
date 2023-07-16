@@ -30,7 +30,7 @@ class TestPersistenceManager(unittest.TestCase):
         self.runner.invoke(slcsp, ["--file", "dummy_file_path"])
 
         latest_print_call = mock_print.call_args[0]
-        assert latest_print_call == ("Cannot determine SLCSP because there is only a single available rate", )
+        assert latest_print_call == ("12345, Cannot determine SLCSP because there is only a single available rate", )
 
     @patch('builtins.print')
     @patch('builtins.open', new_callable=mock_open, read_data='zipcode,rate\n12345,')

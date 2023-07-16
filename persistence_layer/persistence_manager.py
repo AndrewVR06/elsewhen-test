@@ -83,18 +83,18 @@ class PersistenceManager:
             try:
                 zipcode = int(zipcode)
             except ValueError:
-                print(f"Zipcode {zipcode} is not a valid integer")
+                print(f"{zipcode}, Zipcode is not a valid integer", file=sys.stderr)
                 return None
 
         zipcode_data = self.zipcode_data.get(zipcode)
         if zipcode_data is None:
-            print(f"Zipcode {zipcode} does not exist in our dataset", file=sys.stderr)
+            print(f"{zipcode}, Zipcode does not exist in our dataset", file=sys.stderr)
             return None
 
         lookup_key = self._create_medical_plan_lookup_key(zipcode_data["state"], zipcode_data["rate_area"], metal_plan)
 
         if (plan_data := self.plan_data.get(lookup_key)) is None:
-            print(f"Medical plan data does not exist for the given lookup key {lookup_key}", file=sys.stderr)
+            print(f"{zipcode}, Medical plan data does not exist for the given lookup key {lookup_key}", file=sys.stderr)
             return None
 
         # Using a lookup key, retrieve all plan data. Then return all rate information for that plan
